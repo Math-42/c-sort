@@ -48,3 +48,20 @@ void rQuickSort(int arquivo[],int inicio,int fim){
 void quicksort(int arquivo[],int size){
     rQuickSort(arquivo,0,size-1);
 }
+
+void directSort(int arquivo[],int size){
+    int max = arquivo[0];
+    int pos =0;
+    for(int i=0;i<size;i++){
+        for(int j=0;j<size-i;j++){
+            if(arquivo[j]>=max){
+                max = arquivo[j];
+                pos = j;
+            }
+        }
+        int temp = arquivo[size-i-1];
+        arquivo[size-i-1] = max;
+        arquivo[pos] = temp;
+        max = arquivo[0];
+    }
+}

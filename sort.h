@@ -4,5 +4,6 @@
 #define size(arquivo)  (sizeof(arquivo) / sizeof((arquivo)[0]))
 void bubblesort(int arquivo[],int size);
 void quicksort(int arquivo[],int size);
+void directSort(int arquivo[],int size);
 
 #endif
