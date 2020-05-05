@@ -49,7 +49,7 @@ void quicksort(int arquivo[],int size){
     rQuickSort(arquivo,0,size-1);
 }
 
-void selectSort(int arquivo[],int size){
+void selectionSort(int arquivo[],int size){
     int max = arquivo[0];
     int pos =0;
     for(int i=0;i<size;i++){
@@ -63,5 +63,19 @@ void selectSort(int arquivo[],int size){
         arquivo[size-i-1] = max;
         arquivo[pos] = temp;
         max = arquivo[0];
+    }
+}
+
+void insertionSort(int arquivo[],int size){
+    for(int i=1;i<size;i++){
+        int aux = arquivo[i];
+        for(int j=i;j>0;j--){
+            if(aux < arquivo[j-1]){
+                arquivo[j]=arquivo[j-1];
+                arquivo[j-1] = aux;
+            }else{
+                break;
+            }
+        }
     }
 }
