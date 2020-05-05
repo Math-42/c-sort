@@ -49,7 +49,7 @@ void quicksort(int arquivo[],int size){
     rQuickSort(arquivo,0,size-1);
 }
 
-void directSort(int arquivo[],int size){
+void selectSort(int arquivo[],int size){
     int max = arquivo[0];
     int pos =0;
     for(int i=0;i<size;i++){
