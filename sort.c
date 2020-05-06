@@ -122,10 +122,37 @@ void rMergeSort(int arquivo[],int inicio,int fim){
         for(int k=0;k<tamanho;k++){
             arquivo[inicio+k]=tempArray[k];
         }
+        free(tempArray);
     }
 
 }
 
 void mergeSort(int arquivo[],int size){
     rMergeSort(arquivo,0,size-1);
+}
+
+void countingSort(int arquivo[],int size){
+    int max, min;
+    max = min = arquivo[0];
+    for(int i=1;i<size;i++){
+        if(arquivo[i]>max){
+            max = arquivo[i];
+        }
+        if(arquivo[i]<min){
+            min = arquivo[i];
+        }
+    }
+    int* tempArray = (int*)malloc((max-min+1)*sizeof(int));
+    for(int i=0;i<size;i++){
+        tempArray[arquivo[i]-min]++;
+    }
+    int j=0;
+    for(int i=0;i<max-min+1;i++){
+        if(tempArray[i]!=0){
+            while(tempArray[i]!=0){
+                arquivo[j++] = i + min;
+                tempArray[i]--;
+            }
+        }
+    }
 }

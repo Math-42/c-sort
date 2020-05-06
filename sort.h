@@ -9,4 +9,5 @@ void selectionSort(int arquivo[],int size);
 void insertionSort(int arquivo[],int size);
 void shellSort(int arquivo[],int size,int seq[],int sizeSeq);
 void mergeSort(int arquivo[],int size);
+void countingSort(int arquivo[],int size);
 #endif
