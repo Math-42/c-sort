@@ -17,7 +17,6 @@ void bubblesort(int arquivo[],int size){
     }
 }
 
-
 void rQuickSort(int arquivo[],int inicio,int fim){
     if(inicio<=fim){
         int i= inicio-1;
@@ -75,6 +74,21 @@ void insertionSort(int arquivo[],int size){
                 arquivo[j-1] = aux;
             }else{
                 break;
+            }
+        }
+    }
+}
+
+void shellSort(int arquivo[],int size,int seq[],int sizeSeq){
+    for(int i=sizeSeq-1;i>=0;i--){
+        for(int j=i;j<size;j++){
+            int aux = arquivo[j];
+            int k=j;
+            while(arquivo[k]<arquivo[k-seq[i]] && k>=seq[i]){
+                int temp = arquivo[k-seq[i]];
+                arquivo[k-seq[i]] = arquivo[k];
+                arquivo[k] = temp;
+                k-=seq[i];
             }
         }
     }
