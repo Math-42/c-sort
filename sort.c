@@ -93,3 +93,39 @@ void shellSort(int arquivo[],int size,int seq[],int sizeSeq){
         }
     }
 }
+
+void rMergeSort(int arquivo[],int inicio,int fim){
+    if(inicio<fim){
+        int meio = ((inicio+fim)/2);
+
+        rMergeSort(arquivo,inicio,meio);
+        rMergeSort(arquivo,meio + 1,fim);
+
+        int tamanho = fim-inicio + 1;
+        int* tempArray = (int*)malloc(tamanho*sizeof(int));
+        int p1 = inicio;
+        int p2 = meio+1;
+        int k=0;
+        while(p1<=meio && p2<=fim){
+            if(arquivo[p1]<arquivo[p2]){
+                tempArray[k++] =arquivo[p1++];
+            }else{
+                tempArray[k++] =arquivo[p2++];
+            }
+        }
+        while(p1<=meio){
+            tempArray[k++] =arquivo[p1++];
+        }
+        while(p2<=fim){
+            tempArray[k++] =arquivo[p2++];
+        }
+        for(int k=0;k<tamanho;k++){
+            arquivo[inicio+k]=tempArray[k];
+        }
+    }
+
+}
+
+void mergeSort(int arquivo[],int size){
+    rMergeSort(arquivo,0,size-1);
+}
