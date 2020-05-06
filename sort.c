@@ -2,20 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void imprimir2(int arquivo[],int size){
-    for(int i=0;i<(size-1)/2;i++){
-        printf("pai=%d filho1=%d filho2=%d \n",arquivo[i],arquivo[2*i+1],arquivo[2*i+2]);
-    }
-    printf("\n");
-}
-
-void imprimir3(int arquivo[],int size){
-    for(int i=0;i<size;i++){
-        printf("%d ",arquivo[i]);
-    }
-    printf("\n");
-}
-
 void bubblesort(int arquivo[],int size){
     int troca = 1;
     while(troca){
