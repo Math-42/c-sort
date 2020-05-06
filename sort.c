@@ -2,6 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void imprimir2(int arquivo[],int size){
+    for(int i=0;i<(size-1)/2;i++){
+        printf("pai=%d filho1=%d filho2=%d \n",arquivo[i],arquivo[2*i+1],arquivo[2*i+2]);
+    }
+    printf("\n");
+}
+
+void imprimir3(int arquivo[],int size){
+    for(int i=0;i<size;i++){
+        printf("%d ",arquivo[i]);
+    }
+    printf("\n");
+}
+
 void bubblesort(int arquivo[],int size){
     int troca = 1;
     while(troca){
@@ -154,5 +168,38 @@ void countingSort(int arquivo[],int size){
                 tempArray[i]--;
             }
         }
+    }
+}
+
+void heap(int arquivo[],int inicio,int size){
+    int pai = arquivo[inicio];
+    int j= 2*inicio+1;
+    while(j<=size){
+        if(j<size){
+            if(arquivo[j]<arquivo[j+1]){
+                j++;
+            }
+        }
+        if(arquivo[j]>pai){
+            arquivo[inicio] = arquivo[j];
+            inicio = j;
+            j = 2*inicio+1;
+        }else{
+            break;
+        }
+    }
+    arquivo[inicio] = pai;
+}
+
+void heapSort(int arquivo[],int size){
+    int temp;
+    for(int i=(size-1)/2;i>=0;i--){
+        heap(arquivo,i,size-1);
+    }
+    for(int i=size-1;i>=0;i--){
+        temp = arquivo[i];
+        arquivo[i] = arquivo[0];
+        arquivo[0] = temp;
+        heap(arquivo,0,i-1);
     }
 }
