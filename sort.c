@@ -4,16 +4,19 @@
 
 void bubblesort(int arquivo[],int size){
     int troca = 1;
+    int cont =0;
+    int temp;
     while(troca){
         troca = 0;
-        for(int i=0;i<size-1;i++){
+        for(int i=0;i<size-1-cont;i++){
             if(arquivo[i]>arquivo[i+1]){
-                int temp = arquivo[i];
+                temp = arquivo[i];
                 arquivo[i] = arquivo[i+1];
                 arquivo[i+1] = temp;
                 troca = 1;
             }
         }
+        cont++;
     }
 }
 
@@ -50,6 +53,7 @@ void quicksort(int arquivo[],int size){
 void selectionSort(int arquivo[],int size){
     int max = arquivo[0];
     int pos =0;
+    int temp;
     for(int i=0;i<size;i++){
         for(int j=0;j<size-i;j++){
             if(arquivo[j]>=max){
@@ -57,7 +61,7 @@ void selectionSort(int arquivo[],int size){
                 pos = j;
             }
         }
-        int temp = arquivo[size-i-1];
+        temp = arquivo[size-i-1];
         arquivo[size-i-1] = max;
         arquivo[pos] = temp;
         max = arquivo[0];
@@ -65,12 +69,13 @@ void selectionSort(int arquivo[],int size){
 }
 
 void insertionSort(int arquivo[],int size){
+    int temp;
     for(int i=1;i<size;i++){
-        int aux = arquivo[i];
+        temp = arquivo[i];
         for(int j=i;j>0;j--){
-            if(aux < arquivo[j-1]){
+            if(temp < arquivo[j-1]){
                 arquivo[j]=arquivo[j-1];
-                arquivo[j-1] = aux;
+                arquivo[j-1] = temp;
             }else{
                 break;
             }
@@ -79,12 +84,12 @@ void insertionSort(int arquivo[],int size){
 }
 
 void shellSort(int arquivo[],int size,int seq[],int sizeSeq){
+    int temp;
     for(int i=sizeSeq-1;i>=0;i--){
         for(int j=i;j<size;j++){
-            int aux = arquivo[j];
             int k=j;
             while(arquivo[k]<arquivo[k-seq[i]] && k>=seq[i]){
-                int temp = arquivo[k-seq[i]];
+                temp = arquivo[k-seq[i]];
                 arquivo[k-seq[i]] = arquivo[k];
                 arquivo[k] = temp;
                 k-=seq[i];
